@@ -5,7 +5,7 @@
         "config": { 
             "maxLambdaSize": "15mb", 
             "runtime": "python3.9",
-            "maxDuration": 900  // Увеличиваем время выполнения до 15 минут (900 секунд)
+            "maxDuration": 900
         }
     }],
     "routes": [
