@@ -3,44 +3,44 @@ from .serializers import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-import httplib2
-from googleapiclient.discovery import build
-from oauth2client.service_account import ServiceAccountCredentials
+# import httplib2
+# from googleapiclient.discovery import build
+# from oauth2client.service_account import ServiceAccountCredentials
 
-CREDENTIALS_FILE = 'creds.json'
-spreadsheet_design = '1egOuiTuxZPPXV4gVOgMpSVLX1fLbmn-N6gM8FLn1-Qo'
-range_name = 'A:K'
-
-
-def append_to_spreadsheet(self, spreadsheet_id, sheet_name, values):
-    range_name = f'{sheet_name}!A:K'
-    result = service.spreadsheets().values().get(
-        spreadsheetId=spreadsheet_id,
-        range=range_name
-    ).execute()
-    values_in_sheet = result.get('values', [])
-    row_index = len(values_in_sheet) + 1  # Calculate the next available row index
-
-    # Append new data
-    response = service.spreadsheets().values().append(
-        spreadsheetId=spreadsheet_id,
-        range=range_name,
-        valueInputOption="USER_ENTERED",
-        body={
-            "values": values
-        }
-    ).execute()
-
-    return response
-
-
-credentials = ServiceAccountCredentials.from_json_keyfile_name(
-    CREDENTIALS_FILE,
-    ['https://www.googleapis.com/auth/spreadsheets',
-     'https://www.googleapis.com/auth/drive'])
-
-httpAuth = credentials.authorize(httplib2.Http())
-service = build('sheets', 'v4', http=httpAuth)
+# CREDENTIALS_FILE = 'creds.json'
+# spreadsheet_design = '1egOuiTuxZPPXV4gVOgMpSVLX1fLbmn-N6gM8FLn1-Qo'
+# range_name = 'A:K'
+#
+#
+# def append_to_spreadsheet(self, spreadsheet_id, sheet_name, values):
+#     range_name = f'{sheet_name}!A:K'
+#     result = service.spreadsheets().values().get(
+#         spreadsheetId=spreadsheet_id,
+#         range=range_name
+#     ).execute()
+#     values_in_sheet = result.get('values', [])
+#     row_index = len(values_in_sheet) + 1  # Calculate the next available row index
+#
+#     # Append new data
+#     response = service.spreadsheets().values().append(
+#         spreadsheetId=spreadsheet_id,
+#         range=range_name,
+#         valueInputOption="USER_ENTERED",
+#         body={
+#             "values": values
+#         }
+#     ).execute()
+#
+#     return response
+#
+#
+# credentials = ServiceAccountCredentials.from_json_keyfile_name(
+#     CREDENTIALS_FILE,
+#     ['https://www.googleapis.com/auth/spreadsheets',
+#      'https://www.googleapis.com/auth/drive'])
+#
+# httpAuth = credentials.authorize(httplib2.Http())
+# service = build('sheets', 'v4', http=httpAuth)
 
 
 class CyberSportRegistrationAPIView(APIView):
@@ -66,14 +66,14 @@ class CyberSportRegistrationAPIView(APIView):
             print(new_values)
 
             # Append data to the Cyber Sport spreadsheet, in Sheet1
-            response = append_to_spreadsheet(spreadsheet_id=spreadsheet_design, sheet_name='cyber', values=new_values)
+            # response = append_to_spreadsheet(spreadsheet_id=spreadsheet_design, sheet_name='cyber', values=new_values)
 
-            if 'updates' in response and 'updatedRows' in response['updates']:
-                response_serializer = CyberSportSerializer(serializer.instance)
-                return Response(response_serializer.data, status=status.HTTP_201_CREATED)
-            else:
-                return Response({"message": "Failed to add data to Google Sheets"},
-                                status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            # if 'updates' in response and 'updatedRows' in response['updates']:
+            #     response_serializer = CyberSportSerializer(serializer.instance)
+            #     return Response(response_serializer.data, status=status.HTTP_201_CREATED)
+            # else:
+            #     return Response({"message": "Failed to add data to Google Sheets"},
+            #                     status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -100,14 +100,14 @@ class HackathonRegistrationAPIView(APIView):
             ]
 
             # Append data to the Hackathon spreadsheet, in Sheet2
-            response = append_to_spreadsheet(spreadsheet_id=spreadsheet_design, sheet_name='hackathon', values=new_values)
-
-            if 'updates' in response and 'updatedRows' in response['updates']:
-                response_serializer = HackathonSerializer(serializer.instance)
-                return Response(response_serializer.data, status=status.HTTP_201_CREATED)
-            else:
-                return Response({"message": "Failed to add data to Google Sheets"},
-                                status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            # response = append_to_spreadsheet(spreadsheet_id=spreadsheet_design, sheet_name='hackathon', values=new_values)
+            #
+            # if 'updates' in response and 'updatedRows' in response['updates']:
+            response_serializer = HackathonSerializer(serializer.instance)
+            return Response(response_serializer.data, status=status.HTTP_201_CREATED)
+        # else:
+            #     return Response({"message": "Failed to add data to Google Sheets"},
+            #                     status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -135,15 +135,15 @@ class DesignRegistrationAPIView(APIView):
             ]
 
             # Append data to the Hackathon spreadsheet, in Sheet2
-            response = append_to_spreadsheet(spreadsheet_id=spreadsheet_design, sheet_name='design',
-                                             values=new_values)
+            # response = append_to_spreadsheet(spreadsheet_id=spreadsheet_design, sheet_name='design',
+            #                                  values=new_values)
 
-            if 'updates' in response and 'updatedRows' in response['updates']:
-                response_serializer = HackathonSerializer(serializer.instance)
-                return Response(response_serializer.data, status=status.HTTP_201_CREATED)
-            else:
-                return Response({"message": "Failed to add data to Google Sheets"},
-                                status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            # if 'updates' in response and 'updatedRows' in response['updates']:
+            response_serializer = HackathonSerializer(serializer.instance)
+            return Response(response_serializer.data, status=status.HTTP_201_CREATED)
+            # else:
+            #     return Response({"message": "Failed to add data to Google Sheets"},
+            #                     status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -168,15 +168,15 @@ class MobilographyRegistrationAPIView(APIView):
             ]
 
             # Append data to the Hackathon spreadsheet, in Sheet2
-            response = append_to_spreadsheet(spreadsheet_id=spreadsheet_design, sheet_name='mobilography',
-                                             values=new_values)
-
-            if 'updates' in response and 'updatedRows' in response['updates']:
-                response_serializer = HackathonSerializer(serializer.instance)
-                return Response(response_serializer.data, status=status.HTTP_201_CREATED)
-            else:
-                return Response({"message": "Failed to add data to Google Sheets"},
-                                status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            # response = append_to_spreadsheet(spreadsheet_id=spreadsheet_design, sheet_name='mobilography',
+            #                                  values=new_values)
+            #
+            # if 'updates' in response and 'updatedRows' in response['updates']:
+            response_serializer = HackathonSerializer(serializer.instance)
+            return Response(response_serializer.data, status=status.HTTP_201_CREATED)
+            # else:
+            #     return Response({"message": "Failed to add data to Google Sheets"},
+            #                     status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -201,15 +201,15 @@ class RobotixRegistrationAPIView(APIView):
             ]
 
             # Append data to the Hackathon spreadsheet, in Sheet2
-            response = append_to_spreadsheet(spreadsheet_id=spreadsheet_design, sheet_name='robotix',
-                                             values=new_values)
-
-            if 'updates' in response and 'updatedRows' in response['updates']:
-                response_serializer = HackathonSerializer(serializer.instance)
-                return Response(response_serializer.data, status=status.HTTP_201_CREATED)
-            else:
-                return Response({"message": "Failed to add data to Google Sheets"},
-                                status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            # response = append_to_spreadsheet(spreadsheet_id=spreadsheet_design, sheet_name='robotix',
+            #                                  values=new_values)
+            #
+            # if 'updates' in response and 'updatedRows' in response['updates']:
+            response_serializer = HackathonSerializer(serializer.instance)
+            return Response(response_serializer.data, status=status.HTTP_201_CREATED)
+            # else:
+            #     return Response({"message": "Failed to add data to Google Sheets"},
+            #                     status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -234,15 +234,15 @@ class DroneRaceRegistrationAPIView(APIView):
             ]
 
             # Append data to the Hackathon spreadsheet, in Sheet2
-            response = append_to_spreadsheet(spreadsheet_id=spreadsheet_design, sheet_name='drone',
-                                             values=new_values)
-
-            if 'updates' in response and 'updatedRows' in response['updates']:
-                response_serializer = HackathonSerializer(serializer.instance)
-                return Response(response_serializer.data, status=status.HTTP_201_CREATED)
-            else:
-                return Response({"message": "Failed to add data to Google Sheets"},
-                                status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            # response = append_to_spreadsheet(spreadsheet_id=spreadsheet_design, sheet_name='drone',
+            #                                  values=new_values)
+            #
+            # if 'updates' in response and 'updatedRows' in response['updates']:
+            response_serializer = HackathonSerializer(serializer.instance)
+            return Response(response_serializer.data, status=status.HTTP_201_CREATED)
+            # else:
+            #     return Response({"message": "Failed to add data to Google Sheets"},
+            #                     status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -268,15 +268,15 @@ class SpeakerRegistrationAPIView(APIView):
             ]
 
             # Append data to the Hackathon spreadsheet, in Sheet2
-            response = append_to_spreadsheet(spreadsheet_id=spreadsheet_design, sheet_name='speaker',
-                                             values=new_values)
-
-            if 'updates' in response and 'updatedRows' in response['updates']:
-                response_serializer = HackathonSerializer(serializer.instance)
-                return Response(response_serializer.data, status=status.HTTP_201_CREATED)
-            else:
-                return Response({"message": "Failed to add data to Google Sheets"},
-                                status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            # response = append_to_spreadsheet(spreadsheet_id=spreadsheet_design, sheet_name='speaker',
+            #                                  values=new_values)
+            #
+            # if 'updates' in response and 'updatedRows' in response['updates']:
+            response_serializer = HackathonSerializer(serializer.instance)
+            return Response(response_serializer.data, status=status.HTTP_201_CREATED)
+            # else:
+            #     return Response({"message": "Failed to add data to Google Sheets"},
+            #                     status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -302,16 +302,16 @@ class MasterClassRegistrationAPIView(APIView):
             ]
 
             # Append data to the Hackathon spreadsheet, in Sheet2
-            response = append_to_spreadsheet(spreadsheet_id=spreadsheet_design, sheet_name='master_class',
-                                             values=new_values)
-
-            if 'updates' in response and 'updatedRows' in response['updates']:
-                response_serializer = HackathonSerializer(serializer.instance)
-                return Response(response_serializer.data, status=status.HTTP_201_CREATED)
-            else:
-                return Response({"message": "Failed to add data to Google Sheets"},
-                                status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
+            # response = append_to_spreadsheet(spreadsheet_id=spreadsheet_design, sheet_name='master_class',
+            #                                  values=new_values)
+            #
+            # if 'updates' in response and 'updatedRows' in response['updates']:
+            response_serializer = HackathonSerializer(serializer.instance)
+            return Response(response_serializer.data, status=status.HTTP_201_CREATED)
+            # else:
+            #     return Response({"message": "Failed to add data to Google Sheets"},
+            #                     status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        #
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class PhoneNumCheck(APIView):
