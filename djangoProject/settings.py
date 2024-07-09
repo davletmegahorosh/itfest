@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-v$36@^bce@ebt&&aslze_+$0vglx$a=x8p()ag(j_$jwl&+zlt
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 
@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'drf_spectacular',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://176.126.165.67:200']
+# CSRF_TRUSTED_ORIGINS = ['http://176.126.165.67:200']
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
@@ -126,7 +126,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_URL = 'http://176.126.165.67:200/media/'
+# MEDIA_URL = 'http://176.126.165.67:200/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
