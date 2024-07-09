@@ -33,6 +33,7 @@ def append_to_spreadsheet(self, spreadsheet_id, sheet_name, values):
 
     return response
 
+
 credentials = ServiceAccountCredentials.from_json_keyfile_name(
     CREDENTIALS_FILE,
     ['https://www.googleapis.com/auth/spreadsheets',
@@ -40,6 +41,7 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name(
 
 httpAuth = credentials.authorize(httplib2.Http())
 service = build('sheets', 'v4', http=httpAuth)
+
 
 class CyberSportRegistrationAPIView(APIView):
     serializer_class = CyberSportSerializer
