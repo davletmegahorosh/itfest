@@ -2,5 +2,4 @@ venv/
 .idea/
 __pycache__/
 cred.json
-settings.py
 .DS_Store
