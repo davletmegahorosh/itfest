@@ -88,8 +88,8 @@ class HackathonRegistrationAPIView(APIView):
             # serializer.save()
             new_values = [
                 [
-                    request.data.get('Name', ''),
                     request.data.get('Surname', ''),
+                    request.data.get('Name', ''),
                     request.data.get('FatherName', ''),
                     request.data.get('Email', ''),
                     request.data.get('Country', ''),
@@ -143,8 +143,8 @@ class DesignRegistrationAPIView(APIView):
             # serializer.save()
             new_values = [
                 [
-                    request.data.get('Name', ''),
                     request.data.get('Surname', ''),
+                    request.data.get('Name', ''),
                     request.data.get('FatherName', ''),
                     request.data.get('Email', ''),
                     request.data.get('Country', ''),
@@ -197,8 +197,8 @@ class MobilographyRegistrationAPIView(APIView):
             # serializer.save()
             new_values = [
                 [
-                    request.data.get('Name', ''),
                     request.data.get('Surname', ''),
+                    request.data.get('Name', ''),
                     request.data.get('FatherName', ''),
                     request.data.get('Email', ''),
                     request.data.get('Country', ''),
@@ -249,8 +249,8 @@ class RobotixRegistrationAPIView(APIView):
             # serializer.save()
             new_values = [
                 [
-                    request.data.get('Name', ''),
                     request.data.get('Surname', ''),
+                    request.data.get('Name', ''),
                     request.data.get('FatherName', ''),
                     request.data.get('Email', ''),
                     request.data.get('Country', ''),
@@ -301,8 +301,8 @@ class DroneRaceRegistrationAPIView(APIView):
             # serializer.save()
             new_values = [
                 [
-                    request.data.get('Name', ''),
                     request.data.get('Surname', ''),
+                    request.data.get('Name', ''),
                     request.data.get('FatherName', ''),
                     request.data.get('Email', ''),
                     request.data.get('Country', ''),
@@ -353,8 +353,8 @@ class SpeakerRegistrationAPIView(APIView):
             # serializer.save()
             new_values = [
                 [
-                    request.data.get('Name', ''),
                     request.data.get('Surname', ''),
+                    request.data.get('Name', ''),
                     request.data.get('FatherName', ''),
                     request.data.get('Email', ''),
                     request.data.get('Country', ''),
@@ -406,8 +406,8 @@ class MasterClassRegistrationAPIView(APIView):
             # serializer.save()
             new_values = [
                 [
-                    request.data.get('Name', ''),
                     request.data.get('Surname', ''),
+                    request.data.get('Name', ''),
                     request.data.get('FatherName', ''),
                     request.data.get('Email', ''),
                     request.data.get('Country', ''),
