@@ -2,4 +2,5 @@ venv/
 .idea/
 __pycache__/
 cred.json
-djangoProject/settings.py
+settings.py
+.DS_Store

@@ -30,7 +30,7 @@ class CyberSportRegistrationAPIView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            # serializer.save()
             print(request.data.get('Name'))
             new_values = [[
                     request.data.get('Surname'),
@@ -85,7 +85,7 @@ class HackathonRegistrationAPIView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            # serializer.save()
             new_values = [
                 [
                     request.data.get('Name', ''),
@@ -140,7 +140,7 @@ class DesignRegistrationAPIView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            # serializer.save()
             new_values = [
                 [
                     request.data.get('Name', ''),
@@ -194,7 +194,7 @@ class MobilographyRegistrationAPIView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            # serializer.save()
             new_values = [
                 [
                     request.data.get('Name', ''),
@@ -246,7 +246,7 @@ class RobotixRegistrationAPIView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            # serializer.save()
             new_values = [
                 [
                     request.data.get('Name', ''),
@@ -298,7 +298,7 @@ class DroneRaceRegistrationAPIView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            # serializer.save()
             new_values = [
                 [
                     request.data.get('Name', ''),
@@ -350,7 +350,7 @@ class SpeakerRegistrationAPIView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            # serializer.save()
             new_values = [
                 [
                     request.data.get('Name', ''),
@@ -403,7 +403,7 @@ class MasterClassRegistrationAPIView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            # serializer.save()
             new_values = [
                 [
                     request.data.get('Name', ''),
